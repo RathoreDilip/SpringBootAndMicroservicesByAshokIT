@@ -1,0 +1,85 @@
+Product ID: P101
+Product Name: Apple iPhone 15
+Category: Smartphones
+Brand: Apple
+Price: 79999
+Rating: 4.8
+Description:
+Apple iPhone 15 with A16 Bionic chip, 48MP camera, Dynamic Island, USB-C charging, and excellent battery life.
+
+--------------------------------------------------
+
+Product ID: P102
+Product Name: Samsung Galaxy S24
+Category: Smartphones
+Brand: Samsung
+Price: 74999
+Rating: 4.7
+Description:
+Samsung flagship smartphone with AMOLED display, Snapdragon processor, AI camera features, and fast charging.
+
+--------------------------------------------------
+
+Product ID: P103
+Product Name: Sony WH-1000XM5
+Category: Headphones
+Brand: Sony
+Price: 29999
+Rating: 4.9
+Description:
+Premium wireless noise-cancelling headphones with immersive sound quality and long battery backup.
+
+--------------------------------------------------
+
+Product ID: P104
+Product Name: Dell XPS 15
+Category: Laptops
+Brand: Dell
+Price: 145000
+Rating: 4.6
+Description:
+High-performance laptop with Intel i7 processor, 16GB RAM, SSD storage, and 4K display.
+
+--------------------------------------------------
+
+Product ID: P105
+Product Name: MacBook Pro M3
+Category: Laptops
+Brand: Apple
+Price: 199999
+Rating: 4.9
+Description:
+Apple MacBook Pro with M3 chip designed for developers, creators, and high-performance workloads.
+
+--------------------------------------------------
+
+Product ID: P106
+Product Name: Boat Rockerz 450
+Category: Headphones
+Brand: Boat
+Price: 1499
+Rating: 4.2
+Description:
+Affordable wireless headphones with deep bass, Bluetooth connectivity, and long battery life.
+
+--------------------------------------------------
+
+Product ID: P107
+Product Name: Nike Air Max
+Category: Shoes
+Brand: Nike
+Price: 8999
+Rating: 4.5
+Description:
+Comfortable running shoes with modern design and lightweight cushioning technology.
+
+--------------------------------------------------
+
+Product ID: P108
+Product Name: Canon EOS R50
+Category: Cameras
+Brand: Canon
+Price: 68999
+Rating: 4.7
+Description:
+Mirrorless camera suitable for photography and video creation with advanced autofocus features.

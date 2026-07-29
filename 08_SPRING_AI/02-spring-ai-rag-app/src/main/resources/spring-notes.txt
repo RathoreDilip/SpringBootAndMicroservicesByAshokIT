@@ -1,0 +1,21 @@
+FAQ Database:
+
+Spring Basics:
+
+Question: "What is Spring Framework?"
+Answer: "Spring Framework is a lightweight, open-source Java framework used to build enterprise applications."
+
+Dependency Injection:
+
+Question: "What is Dependency Injection in Spring?"
+Answer: "Dependency Injection is a design pattern used by Spring to manage object creation and dependencies."
+
+Spring Boot:
+
+Question: "What is Spring Boot and why is it used?"
+Answer: "Spring Boot is an extension of the Spring Framework that simplifies application development by providing auto-c"
+
+Spring MVC:
+
+Question: "What is Spring MVC?"
+Answer: "Spring MVC is a web framework based on the Model-View-Controller pattern."

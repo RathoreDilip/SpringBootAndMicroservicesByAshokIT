@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Chat App</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            background-color: #343541;
+            font-family: Arial, sans-serif;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Layout */
+        .main-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background-color: #202123;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .new-chat-btn {
+            border: 1px solid #565869;
+            background: transparent;
+            color: white;
+            border-radius: 10px;
+            padding: 12px;
+            width: 100%;
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .new-chat-btn:hover {
+            background-color: #2b2c2f;
+        }
+
+        .sidebar-history {
+            margin-top: 20px;
+            flex-grow: 1;
+        }
+
+        .history-item {
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #d1d5db;
+            margin-bottom: 8px;
+        }
+
+        .history-item:hover {
+            background-color: #2a2b32;
+        }
+
+        /* Chat Section */
+        .chat-section {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Header */
+        .chat-header {
+            padding: 15px 25px;
+            border-bottom: 1px solid #4d4d4f;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #343541;
+        }
+
+        /* Chat Body */
+        .chat-body {
+            padding: 30px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .message {
+            display: flex;
+            margin-bottom: 25px;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message.ai {
+            justify-content: flex-start;
+        }
+
+        .message-box {
+            max-width: 75%;
+            padding: 15px 20px;
+            border-radius: 15px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .user .message-box {
+            background-color: #0d6efd;
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .ai .message-box {
+            background-color: #444654;
+            color: white;
+            border-bottom-left-radius: 5px;
+        }
+
+        /* Input Area */
+        .chat-input-area {
+            padding: 20px;
+            background-color: #343541;
+            border-top: 1px solid #4d4d4f;
+        }
+
+        .chat-form {
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+        }
+
+        .chat-input {
+            width: 100%;
+            background-color: #40414f;
+            border: 1px solid #565869;
+            color: white;
+            border-radius: 15px;
+            padding: 15px 60px 15px 20px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .chat-input::placeholder {
+            color: #b8b8b8;
+        }
+
+        .send-btn {
+            position: absolute;
+            right: 10px;
+            top: 8px;
+            border: none;
+            background-color: #19c37d;
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .send-btn:hover {
+            background-color: #14a46a;
+        }
+
+        /* Welcome */
+        .welcome-text {
+            text-align: center;
+            margin-top: 120px;
+            color: #d1d5db;
+        }
+
+        .welcome-text h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-text p {
+            font-size: 18px;
+            color: #9ca3af;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <button class="new-chat-btn">
+            <i class="bi bi-plus-lg"></i> New Chat
+        </button>
+
+        <div class="sidebar-history">
+
+            <div class="history-item">
+                Java Spring Boot Questions
+            </div>
+
+            <div class="history-item">
+                Explain Generative AI
+            </div>
+
+            <div class="history-item">
+                Microservices Architecture
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Chat Section -->
+    <div class="chat-section">
+
+        <!-- Header -->
+        <div class="chat-header">
+            🤖 AI Assistant
+        </div>
+
+        <!-- Chat Body -->
+        <div class="chat-body">
+
+            <!-- Welcome -->
+            <div class="welcome-text"
+                 th:if="${question == null}">
+                <h1>How can I help you today?</h1>
+                <p>Ask anything about Java, AI, Spring Boot, ML, etc.</p>
+            </div>
+
+            <!-- User Message -->
+            <div class="message user"
+                 th:if="${question != null}">
+                <div class="message-box">
+                    <span th:text="${question}"></span>
+                </div>
+            </div>
+
+            <!-- AI Message -->
+            <div class="message ai"
+                 th:if="${answer != null}">
+                <div class="message-box">
+                    <span th:text="${answer}"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Input Area -->
+        <div class="chat-input-area">
+
+            <form class="chat-form"
+                  th:action="@{/askAnything}"
+                  method="post">
+
+                <input type="text"
+                       name="question"
+                       id="question"
+                       class="chat-input"
+                       placeholder="Message AI Assistant..."
+                       required>
+
+                <button type="submit"
+                        class="send-btn">
+                    <i class="bi bi-send-fill"></i>
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

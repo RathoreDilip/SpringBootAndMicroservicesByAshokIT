@@ -1,0 +1,100 @@
+#################################
+Date : 30-Jul-2024
+Topic : Spring Boot Internals
+#################################
+
+
+Q) How to represent java class as Spring Bean ?
+
+=> We can use below annotations to represent java class as springbean.
+
+@Component
+@Service
+@Repository
+
+@Configuration-----------> java class as configuration class
+@Bean -------------------> method level annotation
+
+@Controller
+@RestController
+
+
+##### Note: Springbean classes will be managed by IOC container.
+
+=================================
+Q) What is component scanning ?
+=================================
+
+=> It is the process of identifying spring beans available in the project.
+
+=> Component Scanning will start from base pacakge (the package which contains start class).
+
+=> Once base package scanning completed then it will go for sub packages of base package.
+
+Note: Any package name which is starting with base package is called as sub package.
+
+Ex:
+
+	in.ashokit--------------------------- will be scanned
+			  - Application.java
+
+    in.ashokit.dao	---------------------- will be scanned
+
+    in.ashokit.service ------------------- will be scanned
+
+    in.ashokit.security ------------------ will be scanned
+
+    com.oracle.util  --------------------- will not be scanned
+
+
+Note: We can configure more than one base package using @ComponentScan annotation like below.
+
+@SpringBootApplication
+@ComponentScan(basePackages = {"in.ashokit","com.oracle.utils"})
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+}
+
+
+=============================
+What is @Bean annotation ?
+=============================
+
+=> It is method level annotation. It is used to customize bean obj creation.
+
+@Configuration
+public class AppConfig {
+
+	@Bean
+	public AppSecurity createAppSecurity() {
+		System.out.println("security app method called....");
+		AppSecurity security = new AppSecurity("AES");
+		return security;
+	}
+}
+
+Note: It is recommended to keep @Bean methods in configuration class. SpringBoot start class also acts as configuration class.
+
+
+================================================
+Q) What is @SpringBootApplication annotation ?
+================================================
+
+=> This is used at start class of the springboot.
+
+=> This annotation is equal to below 3 annotations
+
+				- @SpringBootConfiguration
+				- @EnableAutoConfiguration
+				- @ComponentScan
+
+================
+Assignment :
+================
+
+1) Bean Scopes
+2) Bean Life Cycle
+

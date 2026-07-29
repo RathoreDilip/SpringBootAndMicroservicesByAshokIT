@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--     bean definitions here -->
+    <bean id="p" class="com.ashokit.Printer" />
+
+    <bean id="a" class="com.ashokit.ATM">
+        <constructor-arg name="printer" ref="p" />
+    </bean>
+
+    <bean id="controller" class="com.assignment.user.controller.UserController">
+        <property name="userService" ref="user" />
+    </bean>
+
+    <bean id="user" class="com.assignment.user.service.UserService">
+        <property name="emailService" ref="email" />
+        <property name="passwordService" ref="password" />
+        <property name="userDAO" ref="userDAO" />
+    </bean>
+
+    <bean id="email" class="com.assignment.user.service.EmailService" />
+
+    <bean id="password" class="com.assignment.user.service.PasswordService" />
+
+    <bean id="userDAO" class="com.assignment.user.dao.UserDAO" />
+
+</beans>

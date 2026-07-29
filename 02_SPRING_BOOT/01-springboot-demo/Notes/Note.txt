@@ -1,0 +1,205 @@
+#################################
+Date : 26-Jul-2024
+Topic : Spring Boot Introduction
+#################################
+
+=> Spring Boot is an extension for spring framework.
+
+=> Spring Boot is an approach to develop spring based application with less configuration.
+
+=> Using springboot we can develop several types of applications
+
+			a) standalone applications
+			b) web applications ( C 2 B )
+			c) distributed applications (B 2 B)
+
+=> If we develop project using spring then we need to manage configurations.
+
+=> If we develop project using springboot then we will get Auto Configuration.
+
+=> Autoconfiguration means springboot will identify the configuration required for the project and it will provide that configuration in runtime of our application.
+
+Note: Spring boot will identify configurations required for the project and it will provide those configurations.
+
+		- starting ioc container
+		- component scanning
+		- create connection pool (datasource)
+		- start embedded server
+		- provide default security
+		- provides actuators to monitor our app
+
+=> Using springboot we can achieve rapid application development.
+
+#################################
+Date : 26-Jul-2024
+Topic : Spring Boot Introduction
+#################################
+
+=> Spring Boot is an extension for spring framework.
+
+=> Spring Boot is an approach to develop spring based application with less configuration.
+
+=> Using springboot we can develop several types of applications
+
+			a) standalone applications
+			b) web applications ( C 2 B )
+			c) distributed applications (B 2 B)
+
+=> If we develop project using spring then we need to manage configurations.
+
+=> If we develop project using springboot then we will get Auto Configuration.
+
+=> Autoconfiguration means springboot will identify the configuration required for the project and it will provide
+that configuration in runtime of our application.
+
+Note: Spring boot will identify configurations required for the project and it will provide those configurations.
+
+		- starting ioc container
+		- component scanning
+		- create connection pool (datasource)
+		- start embedded server
+		- provide default security
+		- provides actuators to monitor our app
+
+=> Using springboot we can achieve rapid application development.
+
+===========================
+Advantages with springboot
+===========================
+
+1) pom starters (dependencies)
+
+		a) web-starter
+		b) jpa-starter
+		c) security-starter
+		d) mail-starter
+		e) actuator-starter etc...
+
+Note: pom starters are used to enable auto configurations in boot application.
+
+2) Auto Configuration
+
+=> Based on pom starters boot will identify configurations required for the project and boot will manage those configuration.
+
+
+		web-starter ===> tomcat server
+
+		data-jpa-starter ===> db connection pooling
+
+		security-starter => default login page
+
+		actuator-starter => monitoring
+
+3) Embedded Servers/Containers
+
+=> Springboot will take care of servers to run our web applications (we no need to download & install)
+
+=> Springboot will support 3 embedded containers
+
+		a) tomcat (default)
+		b) jetty
+		c) netty
+
+4) Actuators (production read features)
+
+=> Actuators are used to monitor and manage our applications.
+
+		- check health
+		- check beans loaded
+		- check url patterns
+		- check threads
+		- check heap memory
+
+5) Component Scanning
+
+=> Using component scanning springboot will scan our project packages and it will identify spring beans.
+
+
+=====================================
+How to create springboot project ?
+=====================================
+
+Approach-1 : Create boot application using spring intializer website then download it and extract it and import into eclipse / intelliJ IDE
+
+			URL : start.spring.io
+
+Note: IntelliJ ultimate version will support springboot project creatin directley. IntelliJ ultimate is licensed.
+
+Approach-2 : Use STS ide to create springboot application directley.
+
+Note: STS ide will communicate with intializr website to download project.
+
+Note: To create springboot application internet is mandatory.
+
+
+==========================
+How to install STS IDE
+==========================
+
+1) download sts ide jar file
+
+STS Download Link : https://cdn.spring.io/spring-tools/release/STS4/4.24.0.RELEASE/dist/e4.32/spring-tool-suite-4-4.24.0.RELEASE-e4.32.0-win32.win32.x86_64.self-extracting.jar
+
+2) run that jar file from cmd
+
+syntax : java -jar <file-name>
+
+3) Go to sts folder and open SpringToolSuite4.exe file
+
+=============================
+How to install IntelliJ IDE
+=============================
+
+1) Download IntelliJ community version
+
+Download Link : https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC
+
+2) Once .exe file is downloaded double click and install it.
+
+
+
+#################################
+Date : 27-Jul-2024
+Topic : Spring Boot project
+#################################
+
+Agenda of Day
+---------------
+
+1) Creating Springboot application
+
+2) Playing with pom starters
+
+3) Understanding springboot project folder structure
+
+4) Running springboot application
+
+5) Internals of Springboot (postportam for start class)
+
+======================================
+Springboot project folder structure
+======================================
+
+spring-boot-app
+
+	 - src/main/java ================> project source code
+
+	    - Application.java ====> main/start class
+
+	 - src/main/resources ===========> config files (xml,yml,props)
+
+	    - static  (images goes here)
+
+	    - templates (html files goes here)
+
+	 		- application.properties ===> configurations
+
+	 - src/test/java =========> unit test classes (junits)
+
+	 		- ApplicationTests.java ======> Junit class
+
+	 - maven-dependencies =====> jars downloaded
+
+	 - target (.class files goes here)
+
+	 - pom.xml ==========> maven config file

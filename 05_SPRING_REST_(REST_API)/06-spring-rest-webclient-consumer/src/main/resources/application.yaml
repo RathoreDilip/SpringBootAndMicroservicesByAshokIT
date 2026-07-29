@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: 06-spring-rest-webclient-consumer
+
+
+server:
+  port: 9293

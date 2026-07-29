@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: 01-spring-ai-app
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o
+          max-tokens: 1000
+
+
+#spring:
+#  ai:
+#    ollama:
+#      chat:
+#        options:
+#          model: gemma:latest
+

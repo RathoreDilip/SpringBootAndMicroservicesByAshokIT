@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: 09-spring-boot-circuit-breaker-resilience4J
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+  health:
+    circuitbreakers:
+      enabled: true
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        register-health-indicator: true
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 100s
+        failure-rate-threshold: 50
+
+
+

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: 07-cloud-config-server-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ashokitschool/configuration_properties
+
+
+server:
+  port: 9093
+
+

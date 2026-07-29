@@ -1,0 +1,108 @@
+#################################
+Date : 29-Jul-2024
+Topic : Spring Boot Internals
+#################################
+
+1) What is start class in springboot
+
+2) What is run () method in springboot
+
+3) Internals of run () method
+
+4) what is @SpringBootApplication annotation
+
+5) What is component scanning ?
+
+=====================================
+What is start class in springboot ?
+=====================================
+
+=> Start class is also called as main class of springboot
+
+=> This start class will be created by default when boot app got created.
+
+=> It is entrypoint for boot application execution. Execution will start from here only.
+
+
+====================================================================
+Q) How IOC container will be started in Springboot application ?
+====================================================================
+
+=> run ( ) method will take care of starting IOC container.
+
+=> run ( ) will  use below classes to start IOC container based on starter available in pom.xml
+
+spring-boot-starter :: AnnotationConfigApplicationContext
+
+spring-boot-starter-web :: AnnotationConfigServletWebServerApplicationContext
+
+spring-boot-starter-webflux :: AnnotationConfigReactiveWebServerApplicationContext
+
+
+Note-1: when we use web-starter boot will give "tomcat" as default embedded container.
+
+Note-2:When we use webflux-starter boot will give "netty" as default embedded container.
+
+
+
+=================================
+What is banner in springboot ?
+=================================
+
+=> When we run boot application by default spring logo will be printed on console that is called as banner in springboot.
+
+Note: run ( ) method contains logic to print the banner.
+
+=> We can change banner text according to our requirement by creating "banner.txt" file in "src/main/resources" folder.
+
+=> springboot banner works based on modes. We have 3 types of modes here
+
+		1) console (default)
+		2) log
+		3) off
+
+=> We can set banner mode using "application.properties" file
+
+		spring.main.banner-mode=off
+
+
+========================================
+What is return type of run ( ) method ?
+========================================
+
+=> run ( ) method returns ioc container obj using ConfigurableApplicationContext (interface)
+
+ConfigurableApplicationContext context =
+				SpringApplication.run(Application.class, args);
+
+Note: in the above code, context variable is holding interface impl class obj.
+
+========================================
+What is runner in springboot ?
+========================================
+-> runners are used to execute the logic only one time when boot application started.
+
+
+========================================
+How run () method works internally ?
+========================================
+
+- start the timer
+- create bootstrap context
+- load listner classes
+- start the listners
+- prepare environment (read props/yml file)
+- create application-context (ioc)
+- prepare and refresh IOC (DI)
+- stop the timer
+- calculate time taken and print on console
+- call runners
+- return IOC obj
+
+
+=============
+Assignment
+=============
+What is @SpringBootApplication annotation ?
+
+What is Component Scanning ?

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Image Generator</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e293b, #111827);
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .generator-card {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 35px;
+            font-size: 18px;
+        }
+
+        .form-control {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            color: white;
+            padding: 18px;
+            border-radius: 15px;
+            font-size: 16px;
+        }
+
+        .form-control:focus {
+            background-color: #1e293b;
+            color: white;
+            border-color: #6366f1;
+            box-shadow: 0 0 10px rgba(99,102,241,0.5);
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99,102,241,0.4);
+        }
+
+        .image-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .generated-image {
+            width: 100%;
+            max-width: 700px;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+
+        .generated-image:hover {
+            transform: scale(1.01);
+        }
+
+        .download-btn {
+            margin-top: 20px;
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-weight: bold;
+        }
+
+        .example-prompts {
+            margin-top: 25px;
+        }
+
+        .prompt-chip {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 6px;
+            background-color: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+            font-size: 14px;
+            color: #dbeafe;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <div class="generator-card">
+
+        <!-- Heading -->
+        <div class="text-center">
+            <h1 class="title">
+                🎨 AI Image Generator
+            </h1>
+
+            <p class="subtitle">
+                Create stunning AI-generated images from your imagination
+            </p>
+        </div>
+
+        <!-- Form -->
+        <form th:action="@{/imageGenerator}" method="post">
+
+            <div class="mb-4">
+
+                <label class="form-label mb-3 fs-5">
+                    Enter Your Prompt
+                </label>
+
+                <textarea class="form-control"
+                          name="prompt"
+                          rows="4"
+                          placeholder="Example: Create a futuristic cyberpunk city with neon lights and flying cars..."
+                          required></textarea>
+
+            </div>
+
+            <button type="submit" class="generate-btn">
+                <i class="bi bi-stars"></i>
+                Generate Image
+            </button>
+
+        </form>
+
+        <!-- Example Prompts -->
+        <div class="example-prompts text-center">
+
+            <p class="mt-4 text-secondary">
+                Example Prompts
+            </p>
+
+            <span class="prompt-chip">🚀 Astronaut riding horse on mars</span>
+            <span class="prompt-chip">🌆 Cyberpunk city at night</span>
+            <span class="prompt-chip">🐯 Tiger made of fire</span>
+            <span class="prompt-chip">🏰 Fantasy kingdom in clouds</span>
+            <span class="prompt-chip">🤖 Robot studying Java</span>
+
+        </div>
+
+        <!-- Generated Image Section -->
+        <div class="image-section"
+             th:if="${image != null}">
+
+            <h3 class="mb-4">
+                ✨ Generated Image
+            </h3>
+
+            <img th:src="${image}"
+                 alt="Generated AI Image"
+                 class="generated-image">
+
+            <br>
+
+            <a th:href="${image}"
+               target="_blank"
+               class="btn btn-light download-btn mt-4">
+
+                <i class="bi bi-download"></i>
+                Open Full Image
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

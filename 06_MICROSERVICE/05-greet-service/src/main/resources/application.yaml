@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: 05-greet-service
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111/
+
+server:
+  port: 9091
+
+# eureka client register
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+

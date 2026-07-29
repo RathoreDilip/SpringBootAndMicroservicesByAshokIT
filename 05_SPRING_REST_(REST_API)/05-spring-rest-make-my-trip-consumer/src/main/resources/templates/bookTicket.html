@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Make My Trip</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">View All Ticket</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/bookTicket">Book Ticket</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>Book Ticket here</h2>
+
+    Your Ticket Booking Staus <p style="color:red" th:if="${ticket != null}" th:text="${ticket.ticketStatus}"></p>
+
+    <form th:action="@{/saveTicket}" th:object="${passenger}" method="post">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control"  th:field="*{name}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input type="email" class="form-control" th:field="*{email}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Date of Birth</label>
+            <input type="text" class="form-control" th:field="*{dob}"  />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <input type="text" class="form-control" th:field="*{gender}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Date Of Joining</label>
+            <input type="text" class="form-control" th:field="*{doj}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Source</label>
+            <input type="text" class="form-control" th:field="*{source}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Destination</label>
+            <input type="text" class="form-control" th:field="*{destination}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Train Number</label>
+            <input type="text" class="form-control" th:field="*{trainNum}" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
